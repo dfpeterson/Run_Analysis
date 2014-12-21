@@ -1,0 +1,104 @@
+---
+title: "CodeBook.md"
+author: "David Peterson"
+date: "Saturday, December 21, 2014"
+output: html_document
+---
+
+Background: The `run_analysis()` function reads the smartphone sensor data from
+the test and train data in their respective subfolders and produces a simplified 
+data frame with only the standard deviation and mean variables. The resulting
+variables of the output are:
+- *Subject.ID* - The ID of the subject
+  - An Integer of 1-30
+- *Sample.Source* - An indicator of whether the data originated from the "test or "train" group
+  - "test" - Originating from the Test group
+  - "train" - Originating from the Train group
+- *Activity.Name* - An indicator of which activity was performed for the data
+  - WALKING
+  - WALKING_UPSTAIRS
+  - WALKING_DOWNSTAIRS
+  - SITTING
+  - STANDING
+  - LAYING
+- *Variable.Name* - An indicator of what measurement the data belongs to
+  - tBodyAcc.mean.X - Time Body Accelerometer Mean X-axis
+  - tBodyAcc.mean.Y - Time Body Accelerometer Mean Y-axis
+  - tBodyAcc.mean.Z - Time Body Accelerometer Mean Z-axis
+  - tBodyAcc.std.X - Time Body Accelerometer Standard Dev X-axis
+  - tBodyAcc.std.Y - Time Body Accelerometer Standard Dev Y-axis
+  - tBodyAcc.std.Z - Time Body Accelerometer Standard Dev Z-axis
+  - tGravityAcc.mean.X - Time Gravity Accelerometer Mean X-axis
+  - tGravityAcc.mean.Y - Time Gravity Accelerometer Mean Y-axis
+  - tGravityAcc.mean.Z - Time Gravity Accelerometer Mean Z-axis
+  - tGravityAcc.std.X - Time Gravity Accelerometer Standard Dev X-axis
+  - tGravityAcc.std.Y - Time Gravity Accelerometer Standard Dev Y-axis
+  - tGravityAcc.std.Z - Time Gravity Accelerometer Standard Dev Z-axis
+  - tBodyAccJerk.mean.X - Time Body Accelerometer Jerk Mean X-axis
+  - tBodyAccJerk.mean.Y - Time Body Accelerometer Jerk Mean Y-axis
+  - tBodyAccJerk.mean.Z - Time Body Accelerometer Jerk Mean Z-axis
+  - tBodyAccJerk.std.X - Time Body Accelerometer Jerk Standard Dev X-axis
+  - tBodyAccJerk.std.Y - Time Body Accelerometer Jerk Standard Dev Y-axis
+  - tBodyAccJerk.std.Z - Time Body Accelerometer Jerk Standard Dev Z-axis
+  - tBodyGyro.mean.X - Time Body Gyroscope Mean X-axis
+  - tBodyGyro.mean.Y - Time Body Gyroscope Mean Y-axis
+  - tBodyGyro.mean.Z - Time Body Gyroscope Mean Z-axis
+  - tBodyGyro.std.X - Time Body Gyroscope Standard Dev X-axis
+  - tBodyGyro.std.Y - Time Body Gyroscope Standard Dev Y-axis
+  - tBodyGyro.std.Z - Time Body Gyroscope Standard Dev Z-axis
+  - tBodyGyroJerk.mean.X - Time Body Gyroscope Jerk Mean X-axis
+  - tBodyGyroJerk.mean.Y - Time Body Gyroscope Jerk Mean Y-axis
+  - tBodyGyroJerk.mean.Z - Time Body Gyroscope Jerk Mean Z-axis
+  - tBodyGyroJerk.std.X - Time Body Gyroscope Jerk Standard Dev X-axis
+  - tBodyGyroJerk.std.Y - Time Body Gyroscope Jerk Standard Dev Y-axis
+  - tBodyGyroJerk.std.Z - Time Body Gyroscope Jerk Standard Dev Z-axis
+  - tBodyAccMag.mean - Time Body Accelerometer Magnitude Mean
+  - tBodyAccMag.std - Time Body Accelerometer Magnitude Standard Dev
+  - tGravityAccMag.mean - Time Gravity Accelerometer Magnitude Mean
+  - tGravityAccMag.std - Time Gravity Accelerometer Magnitude Standard Dev
+  - tBodyAccJerkMag.mean - Time Body Accelerometer Jerk Magnitude Mean
+  - tBodyAccJerkMag.std - Time Body Accelerometer Jerk Magnitude Standard Dev
+  - tBodyGyroMag.mean - Time Body Gyroscope Magnitude Mean
+  - tBodyGyroMag.std - Time Body Gyroscope Magnitude Standard Dev
+  - tBodyGyroJerkMag.mean - Time Body Gyroscope Jerk Magnitude Mean
+  - tBodyGyroJerkMag.std - Time Body Gyroscope Jerk Magnitude Standard Dev
+  - fBodyAcc.mean.X - Frequency Body Accelerometer Mean X-axis
+  - fBodyAcc.mean.Y - Frequency Body Accelerometer Mean Y-axis
+  - fBodyAcc.mean.Z - Frequency Body Accelerometer Mean Z-axis
+  - fBodyAcc.std.X - Frequency Body Accelerometer Standard Dev X-axis
+  - fBodyAcc.std.Y - Frequency Body Accelerometer Standard Dev Y-axis
+  - fBodyAcc.std.Z - Frequency Body Accelerometer Standard Dev Z-axis
+  - fBodyAcc.meanFreq.X - Frequency Body Accelerometer Mean Frequency X-axis
+  - fBodyAcc.meanFreq.Y - Frequency Body Accelerometer Mean Frequency Y-axis
+  - fBodyAcc.meanFreq.Z - Frequency Body Accelerometer Mean Frequency Z-axis
+  - fBodyAccJerk.mean.X - Frequency Body Accelerometer Jerk Mean X-axis
+  - fBodyAccJerk.mean.Y - Frequency Body Accelerometer Jerk Mean Y-axis
+  - fBodyAccJerk.mean.Z - Frequency Body Accelerometer Jerk Mean Z-axis
+  - fBodyAccJerk.std.X - Frequency Body Accelerometer Jerk Standard Dev X-axis
+  - fBodyAccJerk.std.Y - Frequency Body Accelerometer Jerk Standard Dev Y-axis
+  - fBodyAccJerk.std.Z - Frequency Body Accelerometer Jerk Standard Dev Z-axis
+  - fBodyAccJerk.meanFreq.X - Frequency Body Accelerometer Jerk Mean Frequency X-axis
+  - fBodyAccJerk.meanFreq.Y - Frequency Body Accelerometer Jerk Mean Frequency Y-axis
+  - fBodyAccJerk.meanFreq.Z - Frequency Body Accelerometer Jerk Mean Frequency Z-axis
+  - fBodyGyro.mean.X - Frequency Body Gyroscope Mean X-axis
+  - fBodyGyro.mean.Y - Frequency Body Gyroscope Mean Y-axis
+  - fBodyGyro.mean.Z - Frequency Body Gyroscope Mean Z-axis
+  - fBodyGyro.std.X - Frequency Body Gyroscope Standard Dev X-axis
+  - fBodyGyro.std.Y - Frequency Body Gyroscope Standard Dev Y-axis
+  - fBodyGyro.std.Z - Frequency Body Gyroscope Standard Dev Z-axis
+  - fBodyGyro.meanFreq.X - Frequency Body Gyroscope Mean Frequency X-axis
+  - fBodyGyro.meanFreq.Y - Frequency Body Gyroscope Mean Frequency Y-axis
+  - fBodyGyro.meanFreq.Z - Frequency Body Gyroscope Mean Frequency Z-axis
+  - fBodyAccMag.mean - Frequency Body Accelerometer Magnitude Mean
+  - fBodyAccMag.std - Frequency Body Accelerometer Magnitude Standard Dev
+  - fBodyAccMag.meanFreq - Frequency Body Accelerometer Magnitude Mean Frequency
+  - fBodyBodyAccJerkMag.mean - Frequency Body BodyAccelerometer Jerk Magnitude Mean
+  - fBodyBodyAccJerkMag.std - Frequency Body BodyAccelerometer Jerk Magnitude Standard Dev
+  - fBodyBodyAccJerkMag.meanFreq - Frequency Body BodyAccelerometer Jerk Magnitude Mean Frequency
+  - fBodyBodyGyroMag.mean - Frequency Body Body Gyroscope Magnitude Mean
+  - fBodyBodyGyroMag.std - Frequency Body Body Gyroscope Magnitude Standard Dev
+  - fBodyBodyGyroMag.meanFreq - Frequency Body Body Gyroscope Magnitude Mean Frequency
+  - fBodyBodyGyroJerkMag.mean - Frequency Body Body Gyroscope Jerk Magnitude Mean
+  - fBodyBodyGyroJerkMag.std - Frequency Body Body Gyroscope Jerk Magnitude Standard Dev
+  - fBodyBodyGyroJerkMag.meanFreq - Frequency Body Body Gyroscope Jerk Magnitude Mean Frequency
+- *Mean.Value* - The mean value of the data grouped by the above values
